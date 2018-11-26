@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adoptar</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    $(document).ready(function () {
+      $('.materialbox').materialbox();
+
+    });
+  </script>
+  <nav>
+    <div class="nav-wrapper red darken-4">
+      <a href="http://127.0.0.1:8000/" class="brand-logo"><img class="responsive-img" src="{% static 'img/logo.png' %}" alt="Logo Mis Perris"></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/registro">Registro</a></li>
+          <li><a href="/admin">Admin</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/registro">Registro</a></li>
+    <li><a href="/admin">Admin</a></li>
+  </ul>
+
+
+  <div class="row">
+    <div class="col s12 l2"></div>
+    <div class="card-panel col s12 l8 center-align">
+        <h4 class="center-align" >Bienvenido</h4>
+        <p class="center-align">Tu direccion IP es {{ip}} y tu pais es {{pais}} <img src="{{bandera}}" width="30" height="23">  </p>
+        <h5 class="center-align" >Tu Ubicación</h5>
+        <p class="center-align">Región: {{region}} ({{rcode}}), Ciudad: {{ciudad}}</p>
+        <iframe src = "https://maps.google.com/maps?q=-33.45,-70.6667&hl=es;z=14&amp;output=embed"></iframe>
+        <h3 class="center-align" >Lista de Adoptantes</h3>
+        {% if lista_adoptantes %}
+        <table>
+            <thead>
+              <tr>
+                  <th>RUN</th>
+                  <th>Nombre</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+                {%for e in lista_adoptantes%}
+              <tr>
+                <td>{{e.run}}</td>
+                <td>{{e.nombre}}</td>
+                <td><a href="registro/"><i class="small material-icons">add</i></a> <a href="buscar/{{e.run}}"><i class="small material-icons">visibility</i></a> <a href="eliminar/{{e.run}}"><i class="small material-icons">delete</i></a> <a href="editar/{{e.run}}"><i class="small material-icons">edit</i></a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+          {% else %}
+          <div class="row center-align">
+              <div class="col s12 l12"></div>
+          <h5 class="center-align" >No hay adoptantes!, Registre uno presionando el siguiente icono:</h3>
+          <a href="registro/"><i class="large material-icons">add</i></a>
+        </div>
+        </div>
+        {% endif %} 
+  </div>
+</div>
+
+  <footer class="page-footer red darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Telefono</h5>
+          <p class="grey-text text-lighten-4"><i class="medium fa fa-whatsapp"></i>+ 56 9 98765431</p>
+        </div>
+        <div class="col l6 s12">
+          <h5 class="white-text">Redes Sociales</h5>
+          <ul id="social" class="valign-wrapper">
+            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram"></i></a></li>
+            <li><a href=""><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        ©MisPerris 2018
+        <!--  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+      </div>
+    </div>
+  </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/comunasregiones.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.rut.js' %}"></script>
+
+  <script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  
+  });
+  </script>
+  <script>
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+  </script>
+  <script>
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+  </script>
+  </body>
+  </html>

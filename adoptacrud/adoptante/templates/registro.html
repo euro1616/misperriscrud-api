@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adoptar</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Import materialize.css
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+
+  <link rel="stylesheet" href="{% static 'css/iso_bootstrap4.1.0min.css' %}">
+
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+
+<body id="bgcontanto">
+  <nav>
+    <div class="nav-wrapper red darken-4">
+      <a href="http://127.0.0.1:8000/" class="brand-logo"><img class="responsive-img" src="{% static 'img/logo.png' %}" alt="Logo Mis Perris"></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
+  </ul>
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="container">
+        <div class="col l12 s12">
+          <div class="card red darken-4">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img id="imagenadoptar" class="center-align activator" src="{% static 'img/adoptar.jpg' %}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Requisitos para adoptar una mascota(click en la imagen)<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">REQUISITOS<i class="material-icons right">close</i></span>
+              <p><p><strong>Ser mayor de edad.</strong>&nbsp;Se presentar&aacute; el&nbsp;<strong>carnet</strong>&nbsp;de identificaci&oacute;n.</p>
+              <p><strong>Comprobante de domicilio.</strong>&nbsp;Documento que demuestre que la persona es propietaria del domicilio donde vivir&aacute; la mascota o, en caso de alquiler, que el arrendatario permite residir con animales.</p>
+              <p><strong>Contrato de adopci&oacute;n.</strong>&nbsp;Debes firmar un acta que te compromete a:</p>
+              <ul>
+                <li>Cuidar de tu mascota y mantenerla en unas condiciones &oacute;ptimas de espacio, tiempo, alimentaci&oacute;n, ejercicio...</li>
+                <li>Dotarle de los cuidados veterinarios que necesite. La mascota se entregar&aacute; desparasitada y con las correspondientes vacunas, los perros llevar&aacute;n adem&aacute;s microchip.</li>
+                <li>No destinarlo a la cr&iacute;a o reproducci&oacute;n.</li>
+                <li>Notificar cualquier cambio a la asociaci&oacute;n (p&eacute;rdida,muerte...).</li>
+                <li>Si no puedes hacerte cargo de &eacute;l nunca lo abandonar&aacute;s, lo devolver&aacute;s a la asociaci&oacute;n.</li>
+              </ul>
+              <h6><strong>Cubrir los costes</strong></h6>
+              <p>Las asociaciones no reciben subsidio econ&oacute;mico sino que viven de las ayudas econ&oacute;micas personales. Se trata de una&nbsp;<strong>donaci&oacute;n</strong>&nbsp;para cubrir los&nbsp;<strong>gastos veterinarios</strong>&nbsp;de la mascota mientras ha estado bajo su tutela.</p>
+              <h6><strong>Lo que debes saber para adoptar una mascota</strong></h6>
+              <ul>
+                <li>La&nbsp;<strong>asociaci&oacute;n</strong>&nbsp;tiene el&nbsp;<strong>derecho</strong>&nbsp;de&nbsp;<strong>no entregarte</strong>&nbsp;la mascota si no se cumplen los requisitos exigidos.</li>
+                <li>Puede solicitar que la&nbsp;<strong>presentaci&oacute;n</strong>&nbsp;o adopci&oacute;n del animal se realice en el&nbsp;<strong>domicilio</strong>&nbsp;en el que vivir&aacute; la mascota para&nbsp;<strong>conocer</strong>&nbsp;su&nbsp;<strong>futuro entorno</strong>.</li>
+                <li>Durante el&nbsp;<strong>r&eacute;gimen de acogida</strong>&nbsp;se realizar&aacute; un&nbsp;<strong>seguimiento</strong>&nbsp;para ver qu&eacute; tal se adapta la mascota a la familia y&nbsp;<strong>comprobar</strong>&nbsp;que se cumple el&nbsp;<strong>compromiso</strong>&nbsp;adquirido.</li>
+                <li>Si te encuentras un animal abandonado existe un&nbsp;<strong>plazo de tiempo</strong>&nbsp;que hay que&nbsp;<strong>esperar</strong>&nbsp;antes de poder adoptarlo oficialmente por si el&nbsp;<strong>due&ntilde;o</strong>&nbsp;lo ha&nbsp;<strong>perdido</strong>&nbsp;y lo quiere reclamar.</li>
+              </ul></p>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <h3 class="center-align" >Formulario de Adopción</h3>
+      <form  id="contactoform" name="adopcionform" action="/registro/crear" method="post">
+          {% csrf_token %}
+        <div class="row">
+          <div class="col s12 l2"></div>
+          <div class="card-panel col s12 l8">
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+                <label for="run">RUT:</label>
+                <input id="validacion-live" name="run" type="text" minlength=10 maxlength=12 required />
+            </div>
+
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="inputTextBox" required pattern="[A-Za-z]{3,25}"/>
+            </div>
+
+
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="telefono">Telefono:</label>
+              <input type="text" name="telefono" minlength=9 maxlength=9 placeholder="938473282" pattern="\d*" required />
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="email">Email:</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label>
+                Fecha de Nacimiento:
+              </label>
+              <input type="text" name="fecha_nacimiento" id="from" class="datepicker" required />
+
+            </div>
+
+
+            <div class="bootstrap">
+              <div class="form-group">
+                <label for="regiones">Seleccione Región:</label>
+                <select name="region" class=".bg-primary form-control" id="regiones">
+                </select>
+              </div>
+
+
+
+
+
+
+              <div class="form-group">
+                <label for="comunas">Seleccione Comuna:</label>
+                <select name="region" class="form-control bootstrap" id="comunas">
+                </select>
+
+
+              </div>
+
+              <div class="form-group">
+                <label for="regiones">Seleccione Tipo de Vivienda:</label>
+                <select name="tipo_vivienda" class="form-control" >
+                  <option>Casa con Patio Grande</option>
+                  <option>Casa con Patio Pequeño</option>
+                  <option>Casa sin patio</option>
+                  <option>Departamento</option>
+                </select>
+
+              </div>
+            </div>
+
+            <div id="checkbf">
+              <label>
+                <input type="checkbox" required />
+                <span>Declaro que estoy de acuerdo con las condiciones.</span>
+              </label>
+            </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                         <p class="right-align"><button class="btn btn-large waves-effect waves-light red darken-4" type="submit" name="action">Enviar</button></p>
+                        </div>
+                    </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <footer class="page-footer  red darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Telefono</h5>
+          <p class="grey-text text-lighten-4"><i class="medium fa fa-whatsapp" ></i>+ 56 9 98765431</p>
+        </div>
+        <div class="col l6 s12">
+          <h5 class="white-text">Redes Sociales</h5>
+          <ul id="social" class="valign-wrapper">
+            <li><a href=""><i class="fa fa-facebook" ></i></a></li>
+            <li><a href=""><i class="fa fa-twitter" ></i></a></li>
+            <li><a href=""><i class="fa fa-instagram" ></i></a></li>
+            <li><a href=""><i class="fa fa-envelope" ></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        ©MisPerris 2018
+        <!--  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+      </div>
+    </div>
+  </footer>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/comunasregiones.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.rut.js' %}"></script>
+  <script>
+  $(document).ready(function(){
+    $("#inputTextBox").keypress(function(event){
+      var inputValue = event.which;
+      // allow letters and whitespaces only.
+      if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+<script>
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth();
+var day = date.getDate();
+var date = new Date(year - 18, month, day);
+
+$('#from').datepicker({
+  autoClose : true,
+  format : 'yyyy-mm-dd',
+  yearRange : 1,
+  maxDate: date,
+  defaultDate: date,
+  setDefaultDate:date,
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+
+});
+</script>
+<script type="text/javascript">
+$("#validacion-live")
+.rut({formatOn: 'keyup', validateOn: 'keyup'})
+.on('rutInvalido', function(){
+  $(this).parents(".control-group").addClass("error")
+})
+.on('rutValido', function(){
+  $(this).parents(".control-group").removeClass("error")
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+</script>
+</body>
+</html>

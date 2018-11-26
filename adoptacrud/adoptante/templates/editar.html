@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adoptar</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Import materialize.css
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+
+  <link rel="stylesheet" href="{% static 'css/iso_bootstrap4.1.0min.css' %}">
+
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+
+<body id="bgcontanto">
+  <nav>
+    <div class="nav-wrapper red darken-4">
+      <a href="http://127.0.0.1:8000/" class="brand-logo"><img class="responsive-img" src="{% static 'img/logo.png' %}" alt="Logo Mis Perris"></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
+  </ul>
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="container">
+        <div class="col l12 s12">
+          <div class="card red darken-4">
+                <h1 class="center-align">Registro del Adoptante: {{adoptante.nombre}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <h3 class="center-align" >Formulario de Adopción</h3>
+      <form  id="contactoform" name="adopcionform" action="/registro/edicion/{{remedio.codigo}}" method="post">
+          {% csrf_token %}
+        <div class="row">
+          <div class="col s12 l2"></div>
+          <div class="card-panel col s12 l8">
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+                <label for="run">RUT:</label>
+                <input id="validacion-live" name="run" type="text" minlength=10 maxlength=12 value="{{adoptante.run}}" required />
+            </div>
+
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="inputTextBox" value="{{adoptante.nombre}}" required pattern="[A-Za-z]{3,25}"/>
+            </div>
+
+
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="telefono">Telefono:</label>
+              <input type="text" name="telefono" minlength=9 maxlength=9 placeholder="938473282" pattern="\d*" value="{{adoptante.telefono}}" required />
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label for="email">Email:</label>
+              <input type="email" name="email" value="{{adoptante.email}}" required />
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <label>
+                Fecha de Nacimiento:
+              </label>
+              <input type="text" name="fecha_nacimiento" id="from" value="{{adoptante.fecha_nacimiento}}" class="datepicker" required />
+
+            </div>
+
+
+            <div class="bootstrap">
+              <div class="form-group">
+                <label for="regiones">Seleccione Región:</label>
+                <select name="region" class=".bg-primary form-control" id="regiones" value="{{adoptante.region}}">
+                </select>
+              </div>
+
+
+
+
+
+
+              <div class="form-group">
+                <label for="comunas">Seleccione Comuna:</label>
+                <select name="region" class="form-control bootstrap" id="comunas" value="{{adoptante.ciudad}}">
+                </select>
+
+
+              </div>
+
+              <div class="form-group">
+                <label for="regiones">Seleccione Tipo de Vivienda:</label>
+                <select name="tipo_vivienda" class="form-control" value="{{adoptante.tipo_vivienda}}">
+                  <option>Casa con Patio Grande</option>
+                  <option>Casa con Patio Pequeño</option>
+                  <option>Casa sin patio</option>
+                  <option>Departamento</option>
+                </select>
+
+              </div>
+            </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                         <p class="right-align"><button class="btn btn-large waves-effect waves-light red darken-4" type="submit" name="action">Enviar</button></p>
+                        </div>
+                    </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <footer class="page-footer  red darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Telefono</h5>
+          <p class="grey-text text-lighten-4"><i class="medium fa fa-whatsapp" ></i>+ 56 9 98765431</p>
+        </div>
+        <div class="col l6 s12">
+          <h5 class="white-text">Redes Sociales</h5>
+          <ul id="social" class="valign-wrapper">
+            <li><a href=""><i class="fa fa-facebook" ></i></a></li>
+            <li><a href=""><i class="fa fa-twitter" ></i></a></li>
+            <li><a href=""><i class="fa fa-instagram" ></i></a></li>
+            <li><a href=""><i class="fa fa-envelope" ></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        ©MisPerris 2018
+        <!--  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+      </div>
+    </div>
+  </footer>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/comunasregiones.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.rut.js' %}"></script>
+  <script>
+  $(document).ready(function(){
+    $("#inputTextBox").keypress(function(event){
+      var inputValue = event.which;
+      // allow letters and whitespaces only.
+      if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+<script>
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth();
+var day = date.getDate();
+var date = new Date(year - 18, month, day);
+
+$('#from').datepicker({
+  autoClose : true,
+  format : 'yyyy-mm-dd',
+  yearRange : 1,
+  maxDate: date,
+  defaultDate: date,
+  setDefaultDate:date,
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+
+});
+</script>
+<script type="text/javascript">
+$("#validacion-live")
+.rut({formatOn: 'keyup', validateOn: 'keyup'})
+.on('rutInvalido', function(){
+  $(this).parents(".control-group").addClass("error")
+})
+.on('rutValido', function(){
+  $(this).parents(".control-group").removeClass("error")
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+</script>
+</body>
+</html>
